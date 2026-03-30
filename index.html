@@ -149,7 +149,7 @@
             color: var(--text-secondary);
             margin-bottom: 15px;
             font-size: 14px;
-            text-align: right;
+            text-align: left;
         }
         
         .exp-header {
@@ -157,6 +157,7 @@
             justify-content: space-between;
             align-items: baseline;
             margin-bottom: 8px;
+            text-align: left;
         }
         
         .edu-header {
@@ -203,6 +204,7 @@
             position: relative;
             margin-left: 0;
             padding-left: 18px;
+            text-align: left;
         }
 
 
@@ -309,34 +311,85 @@
             
             /* Grid layouts to single column on mobile */
             .profile-header {
-                flex-direction: column;
+                flex-direction: row;
                 align-items: flex-start;
             }
             
             .profile-photo {
-                order: -1;
-                margin-bottom: 15px;
+                margin-left: auto;
             }
             
             .profile-photo img {
-                width: 120px;
-                height: 120px;
+                width: 100px;
+                height: 100px;
             }
             
-            /* 4-column grid for highlights - make 2 columns on mobile */
+            /* 实习经历体验卡片横向滑动 */
+            .experience-item {
+                overflow-x: auto;
+                display: flex;
+                flex-direction: column;
+                scroll-snap-type: y proximity;
+            }
+            
+            /* 实习经历信息三行排列 */
+            .exp-header {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            
+            .exp-header h3 {
+                margin-bottom: 2px !important;
+                font-size: 16px !important;
+            }
+            
+            .exp-header h3 span {
+                display: block !important;
+                font-size: 14px !important;
+                margin-top: 2px !important;
+                margin-left: 0 !important;
+                color: var(--text-secondary) !important;
+                font-weight: normal !important;
+            }
+            
+            .exp-header .meta-info {
+                text-align: left !important;
+                font-size: 13px !important;
+                margin-bottom: 5px !important;
+            }
+            
+            /* 项目卡片横向滚动容器 */
+            .project-cards-container {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                gap: 10px !important;
+                padding-bottom: 10px !important;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                scrollbar-color: var(--border-color) transparent;
+            }
+            
+            /* 项目卡片固定宽度，支持横向滑动 */
+            .project-cards-container > div {
+                min-width: 85vw !important;
+                scroll-snap-align: start;
+            }
+            
+            /* 4-column grid for highlights - make 1 column */
             [style*="grid-template-columns: repeat(4, 1fr)"] {
-                grid-template-columns: repeat(2, 1fr) !important;
+                grid-template-columns: 1fr !important;
             }
             
-            /* 3-column grids - make 2 columns on mobile */
+            /* 3-column grids - make 1 column */
             [style*="grid-template-columns: repeat(3, 1fr)"],
             [style*="grid-template-columns: 0.9fr 1fr 0.9fr"] {
-                grid-template-columns: repeat(2, 1fr) !important;
+                grid-template-columns: 1fr !important;
             }
             
-            /* 2-column grids - keep 2 columns on mobile */
+            /* 2-column grids - make 1 column */
             [style*="grid-template-columns: repeat(2, 1fr)"] {
-                grid-template-columns: repeat(2, 1fr) !important;
+                grid-template-columns: 1fr !important;
             }
             
             h1 {
@@ -481,7 +534,7 @@
                     </div>
                     
                     <div class="project-title" style="margin-bottom: 12px;">PUBG Mobile</div>
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px;">
+                    <div class="project-cards-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px;">
                         <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
                             <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">从0到1搭建社群驱动用户增长</h3>
                             <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">洞察西欧中文玩家的付费潜力、母语社交需求搭建社群，并通过精细化运营与流程沉淀，最终驱动社群满意度提升<u>38%</u>，活跃用户增长<u>54%</u>，沉淀的标准化SOP被推广至其他社群应用。</p>
@@ -499,7 +552,7 @@
                     </div>
 
                     <div class="project-title" style="margin-bottom: 12px;">Honor of Kings 王者荣耀国际服</div>
-                    <div style="display: grid; grid-template-columns: 0.9fr 1fr 0.9fr; gap: 10px; margin-bottom: 10px;">
+                    <div class="project-cards-container" style="display: grid; grid-template-columns: 0.9fr 1fr 0.9fr; gap: 10px; margin-bottom: 10px;">
                         <div style="background-color: rgba(255,255,255,0.6); padding: 10px; border-radius: 8px;">
                             <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">整合BD电竞资源提升高校品牌形象</h3>
                             <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">开拓与德国学联的首次品牌合作，整合外交大使等资源策划线下活动，建立品牌形象并实现线上曝光超<u>54万</u>。</p>
@@ -517,7 +570,7 @@
                     </div>
 
                     <div class="project-title" style="margin-bottom: 12px;">新品 | GTA-Like 开放世界</div>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 12px;">
+                    <div class="project-cards-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 12px;">
                         <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
                             <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">调研市场为产品差异化竞争提供支持</h3>
                             <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">通过AI爬虫分析社媒舆情，提炼"动态合作体验""深度经营策略""热点化主题"等产品差异化机会点，为发行策略提供数据支撑。</p>
@@ -537,7 +590,7 @@
                     </div>
                     
                     <div class="project-title" style="margin-bottom: 12px;">掌上无畏契约</div>
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px;">
+                    <div class="project-cards-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px;">
                         <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
                             <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">运营高校板块推动核心用户增长</h3>
                             <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">洞察高校用户对赛事参与感、操作精进与游戏社交的需求，运营端内高校板块；策划多个主题栏目，提升高校用户触达率，3个月内实现核心用户增长<u>754%</u>。</p>
