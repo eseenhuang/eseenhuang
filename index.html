@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄鑫宇 | 游戏发行运营</title>
+    <style>
+        :root {
+            --bg-gradient-start: #f8f9fa;
+            --bg-gradient-end: #e8e9ea;
+            --text-color: #2c3e50;
+            --text-secondary: #6c757d;
+            --link-color: #3a7bd5;
+            --link-hover: #2d5aa8;
+            --border-color: #cfd8dc;
+            --light-gray: #f0f3f5;
+            --accent-color: #3a7bd5;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', '微软雅黑', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            font-size: 15px;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: var(--link-hover);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 15px 0;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* Layout */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+        }
+
+        .contact-info {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+            word-break: break-all;
+        }
+
+        /* Profile Combined Section */
+        .profile-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .profile-photo {
+            flex-shrink: 0;
+        }
+
+        .contact-info svg {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        /* Main Content */
+        .content {
+            width: 75%;
+            padding: 20px 0 20px 40px;
+        }
+
+        section {
+            margin-bottom: 13px;
+            /* Offset for fixed header anchor links */
+            padding-top: 70px;
+            margin-top: -70px;
+        }
+
+        h2 {
+            font-size: 22px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--text-color);
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .meta-info {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-align: right;
+        }
+        
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+        
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+        
+        .edu-info {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        /* Experience Timeline */
+        .experience-item {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .project-block {
+            margin-left: 0;
+            border-left: none;
+            padding-left: 15px;
+            margin-bottom: 12px;
+        }
+
+        .project-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            color: #0000FF;
+            position: relative;
+            margin-left: 0;
+            padding-left: 18px;
+        }
+
+
+
+        /* 实习经历详细描述文字灰色 */
+        .project-block ul li {
+            color: var(--text-secondary);
+        }
+        
+        .project-block ul li strong {
+            color: var(--text-secondary);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category h4 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skill-list li {
+            display: inline-block;
+            background-color: var(--light-gray);
+            padding: 4px 8px;
+            margin: 0 5px 5px 0;
+            font-size: 13px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Achievements Data Visualization */
+        .achievement-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .achievement-label {
+            width: 200px;
+            flex-shrink: 0;
+        }
+        .achievement-track {
+            flex-grow: 1;
+            height: 12px;
+            background-color: var(--light-gray);
+            border: 1px solid var(--border-color);
+            margin: 0 15px;
+        }
+        .achievement-fill {
+            height: 100%;
+            background-color: var(--text-color);
+        }
+        .achievement-value {
+            width: 60px;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 100px;
+                padding: 0 15px;
+            }
+            .sidebar {
+                width: 100%;
+                position: static;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 0 0 20px 0;
+                margin-bottom: 20px;
+            }
+            .content {
+                width: 100%;
+                padding: 0 10px;
+            }
+            .nav-links {
+                gap: 10px;
+            }
+            .nav-links a {
+                font-size: 12px;
+            }
+            .achievement-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .achievement-track {
+                width: 100%;
+                margin: 5px 0;
+            }
+            .achievement-value {
+                text-align: left;
+            }
+            
+            /* Grid layouts to single column on mobile */
+            .profile-header {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            
+            .profile-photo {
+                margin-left: auto;
+            }
+            
+            .profile-photo img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            /* 实习经历体验卡片横向滑动 */
+            .experience-item {
+                overflow-x: auto;
+                display: flex;
+                flex-direction: column;
+                scroll-snap-type: y proximity;
+            }
+            
+            /* 实习经历信息三行排列 */
+            .exp-header {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            
+            .exp-header h3 {
+                margin-bottom: 2px !important;
+                font-size: 16px !important;
+            }
+            
+            .exp-header h3 span {
+                display: block !important;
+                font-size: 14px !important;
+                margin-top: 2px !important;
+                margin-left: 0 !important;
+                color: var(--text-secondary) !important;
+                font-weight: normal !important;
+            }
+            
+            .exp-header .meta-info {
+                text-align: left !important;
+                font-size: 13px !important;
+                margin-bottom: 5px !important;
+            }
+            
+            /* 项目卡片横向滚动容器 */
+            .project-cards-container {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                gap: 10px !important;
+                padding-bottom: 10px !important;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                scrollbar-color: var(--border-color) transparent;
+            }
+            
+            /* 项目卡片固定宽度，支持横向滑动 */
+            .project-cards-container > div {
+                min-width: 85vw !important;
+                scroll-snap-align: start;
+            }
+            
+            /* 4-column grid for highlights - make 1 column */
+            [style*="grid-template-columns: repeat(4, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* 3-column grids - make 1 column */
+            [style*="grid-template-columns: repeat(3, 1fr)"],
+            [style*="grid-template-columns: 0.9fr 1fr 0.9fr"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* 2-column grids - make 1 column */
+            [style*="grid-template-columns: repeat(2, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            h1 {
+                font-size: 24px !important;
+            }
+            
+            h2 {
+                font-size: 18px !important;
+            }
+            
+            h3 {
+                font-size: 16px !important;
+            }
+            
+            body {
+                font-size: 14px;
+            }
+        }
+        
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+                margin-top: 90px;
+            }
+            
+            .content {
+                padding: 0 5px;
+            }
+            
+            .nav-links {
+                gap: 8px;
+            }
+            
+            .nav-links a {
+                font-size: 11px;
+            }
+            
+            nav {
+                padding: 10px 0;
+            }
+            
+            h1 {
+                font-size: 22px !important;
+            }
+            
+            h2 {
+                font-size: 17px !important;
+            }
+            
+            h3 {
+                font-size: 15px !important;
+            }
+            
+            body {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" style="margin-top: 30px;">
+        <main class="content" style="width: 100%; padding: 15px 30px;">
+            <section id="about" style="padding-top: 0; margin-top: 0;">
+                <div class="profile-combined">
+                    <div class="profile-header">
+                        <div class="profile-info">
+                            <h1 style="margin: 0 0 5px 0; font-size: 26px;">黄鑫宇</h1>
+                            <div style="font-weight: normal; margin-bottom: 15px; font-size: 16px;">游戏发行运营</div>
+                            <div style="display: flex; flex-direction: column; gap: 12px;">
+                                <div style="display: flex; align-items: center;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; margin-right: 10px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                    <a href="tel:13554048050">13554048050</a>
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; margin-right: 10px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                    <a href="mailto:eseenhuang@gmail.com">eseenhuang@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-photo" style="margin-left: auto;">
+                            <img src="profile-photo-no-bg.png" alt="黄鑫宇" style="width: 150px; height: 150px;">
+                        </div>
+                    </div>
+                    <div class="profile-description" style="margin-top: 20px;">
+                        <p>曾在<strong>PUBGM</strong>、<strong>HOK王者荣耀国际服</strong>、<strong>掌上无畏契约外团</strong>实习，熟悉<strong>产品运营</strong>、<strong>社群运营</strong>、<strong>数据分析</strong>，具备<strong>用户增长</strong>、<strong>策略制定</strong>与<strong>资源整合</strong>能力。</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; margin-bottom: 10px;">
+                            <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
+                                <h3 style="font-size: 15px; margin: 0 0 8px 0; color: #0000FF;">数据驱动决策</h3>
+                                <ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+                                    <li>通过问卷数据构建HOK西欧用户画像，提出的运营策略被团队采纳。</li>
+                                </ul>
+                            </div>
+
+                            <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
+                                <h3 style="font-size: 15px; margin: 0 0 8px 0; color: #0000FF;">熟练运用AI</h3>
+                                <ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+                                    <li>利用AI爬虫挖掘竞品动态，转化的世界杯主题玩法创意被研发采纳。</li>
+                                </ul>
+                            </div>
+
+                            <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
+                                <h3 style="font-size: 15px; margin: 0 0 8px 0; color: #0000FF;">资源整合与社群运营</h3>
+                                <ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+                                    <li>从0到1搭建PUBGM西欧社群。</li>
+                                    <li>策划HOK高校活动，品牌曝光54万。</li>
+                                </ul>
+                            </div>
+
+                            <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
+                                <h3 style="font-size: 15px; margin: 0 0 8px 0; color: #0000FF;">跨项目与多国市场经验</h3>
+                                <ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+                                    <li>横跨多个项目积累了丰富的社群运营与海外市场发行经验。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education">
+                <h2>教育背景</h2>
+                <div class="edu-header">
+                    <div style="display: flex; align-items: baseline;">
+                        <span style="font-size: 18px; font-weight: bold;">武汉理工大学</span>
+                        <span style="margin-left: 15px; color: var(--text-secondary);">信息交互设计 | 本科</span>
+                    </div>
+                    <span class="edu-info">2023.09 - 2027.06</span>
+                </div>
+                <div style="color: var(--text-secondary); font-size: 14px; margin-top: 8px;">专项奖学金、英语四六级证书、全国大学生商业精英挑战赛 全国二等奖</div>
+            </section>
+
+            <section id="experience">
+                <h2>实习经历</h2>
+                
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <h3><strong>腾讯 IEG Global 区域发行团队</strong>      <span style="font-size: 14px; color: var(--text-secondary);">游戏发行运营</span></h3>
+                        <span class="meta-info">2025.07 - 至今</span>
+                    </div>
+                    
+                    <div class="project-title" style="margin-bottom: 12px;">PUBG Mobile</div>
+                    <div class="project-cards-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px;">
+                        <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
+                            <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">从0到1搭建社群驱动用户增长</h3>
+                            <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">洞察西欧中文玩家的付费潜力、母语社交需求搭建社群，并通过精细化运营与流程沉淀，最终驱动社群满意度提升<u>38%</u>，活跃用户增长<u>54%</u>，沉淀的标准化SOP被推广至其他社群应用。</p>
+                        </div>
+
+                        <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
+                            <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">监控竞品支持增长策略与版本策划</h3>
+                            <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">结合世界杯热门节点，通过AI爬虫挖掘竞品动态与用户舆情，将其转化为可落地的玩法创意与可视化设计，所提方案在关键版本中获研发<u>83%</u>采纳，提升策划案的竞争力与立体感。</p>
+                        </div>
+
+                        <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
+                            <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">整合UGC与KOL资源促进留存与回流</h3>
+                            <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">结合本地市场环法自行车赛事热点和Brainrot、Grow A Garden等热门玩法筛选UGC作品，整合资源上线。并联动本地KOL提升玩法合集线上曝光，1年内流失用户的触达率<u>24%</u>，促进超<u>800位</u>用户回流。</p>
+                        </div>
+                    </div>
+
+                    <div class="project-title" style="margin-bottom: 12px;">Honor of Kings 王者荣耀国际服</div>
+                    <div class="project-cards-container" style="display: grid; grid-template-columns: 0.9fr 1fr 0.9fr; gap: 10px; margin-bottom: 10px;">
+                        <div style="background-color: rgba(255,255,255,0.6); padding: 10px; border-radius: 8px;">
+                            <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">整合BD电竞资源提升高校品牌形象</h3>
+                            <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">开拓与德国学联的首次品牌合作，整合外交大使等资源策划线下活动，建立品牌形象并实现线上曝光超<u>54万</u>。</p>
+                        </div>
+
+                        <div style="background-color: rgba(255,255,255,0.6); padding: 10px; border-radius: 8px;">
+                            <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">负责ACEUPM高校自办赛的全链路运营</h3>
+                            <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">协调资源保障赛事顺利落地，创新引入AI工具优化审核与验收流程，最终沉淀出可复用的SOP。</p>
+                        </div>
+
+                        <div style="background-color: rgba(255,255,255,0.6); padding: 10px; border-radius: 8px;">
+                            <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">构建用户画像支持运营策略制定</h3>
+                            <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">通过数据分析锁定西欧用户"年轻移民为主、稳定性高"的核心特征，并基于"年轻化、高稳定性"的用户画像，构建涵盖品牌跨界、社区赛事、创作者扶持的整合运营策略，该策略获得团队认可并纳入产品Roadmap。</p>
+                        </div>
+                    </div>
+
+                    <div class="project-title" style="margin-bottom: 12px;">新品 | GTA-Like 开放世界</div>
+                    <div class="project-cards-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 12px;">
+                        <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
+                            <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">调研市场为产品差异化竞争提供支持</h3>
+                            <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">通过AI爬虫分析社媒舆情，提炼"动态合作体验""深度经营策略""热点化主题"等产品差异化机会点，为发行策略提供数据支撑。</p>
+                        </div>
+
+                        <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
+                            <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">主导产品的意大利语本地化可行性研究</h3>
+                            <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">结合3个品类共16款竞品数据，构建收入预测模型，量化本地化ROI，为产品在意大利市场的发行决策提供关键依据。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <h3><strong>腾讯 K6 合作部</strong>      <span style="font-size: 14px; color: var(--text-secondary);">运营外团</span></h3>
+                        <span class="meta-info">2025.03 - 2025.06</span>
+                    </div>
+                    
+                    <div class="project-title" style="margin-bottom: 12px;">掌上无畏契约</div>
+                    <div class="project-cards-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px;">
+                        <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
+                            <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">运营高校板块推动核心用户增长</h3>
+                            <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">洞察高校用户对赛事参与感、操作精进与游戏社交的需求，运营端内高校板块；策划多个主题栏目，提升高校用户触达率，3个月内实现核心用户增长<u>754%</u>。</p>
+                        </div>
+
+                        <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
+                            <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">整合线下及电竞资源扩大平台声量</h3>
+                            <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">设计线下打卡点与Coser互动展台，端内话题互动超<u>3000条</u>；邀请社区活跃用户参与线下观赛，引导用户在多平台自发宣传，有效提升端内外话题热度，实现泛用户转化。</p>
+                        </div>
+
+                        <div style="background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
+                            <h3 style="font-size: 14px; margin: 0 0 8px 0; color: #000000;">孵化种子创作者促进UGC生态建设</h3>
+                            <p style="margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">运营核心用户社群，从中筛选种子创作者，引导其围绕不同主题输出UGC内容；洞察用户偏好，策划端内话题活动，单话题PV突破<u>160K</u>；推动UGC与PGC生态共建，内容转化率提升<u>61%</u>。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2>技能矩阵</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>设计工具</h4>
+                        <ul class="skill-list">
+                            <li>Axure</li>
+                            <li>Figma</li>
+                            <li>Photoshop</li>
+                            <li>Adobe Illustrator</li>
+                            <li>Blender</li>
+                            <li>Rhino</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>AI工具</h4>
+                        <ul class="skill-list">
+                            <li>Midjourney</li>
+                            <li>Gemini</li>
+                            <li>Gamma</li>
+                            <li>Manus</li>
+                            <li>Deepseek</li>
+                            <li>Kimi</li>
+                            <li>Typeless</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>效率工具</h4>
+                        <ul class="skill-list">
+                            <li>Xmind</li>
+                            <li>Typora</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
