@@ -309,38 +309,37 @@
                 text-align: left;
             }
             
-            /* Grid layouts to single column on mobile */
+            /* 照片和个人信息顶部对齐 */
             .profile-header {
-                flex-direction: row;
-                align-items: flex-start;
+                flex-direction: row !important;
+                align-items: flex-start !important;
             }
             
             .profile-photo {
-                margin-left: auto;
+                margin-left: auto !important;
             }
             
             .profile-photo img {
-                width: 100px;
-                height: 100px;
+                width: 100px !important;
+                height: 100px !important;
             }
             
-            /* 实习经历体验卡片横向滑动 */
+            /* 实习经历垂直排列，不做横向滑动 */
             .experience-item {
-                overflow-x: auto;
-                display: flex;
-                flex-direction: column;
-                scroll-snap-type: y proximity;
+                display: block;
             }
             
-            /* 实习经历信息三行排列 */
+            /* 实习经历信息三行排列 - 左对齐 */
             .exp-header {
                 flex-direction: column !important;
                 align-items: flex-start !important;
+                text-align: left !important;
             }
             
             .exp-header h3 {
                 margin-bottom: 2px !important;
                 font-size: 16px !important;
+                text-align: left !important;
             }
             
             .exp-header h3 span {
@@ -350,6 +349,7 @@
                 margin-left: 0 !important;
                 color: var(--text-secondary) !important;
                 font-weight: normal !important;
+                text-align: left !important;
             }
             
             .exp-header .meta-info {
@@ -358,22 +358,19 @@
                 margin-bottom: 5px !important;
             }
             
-            /* 项目卡片横向滚动容器 */
+            /* 项目卡片容器 - 改为一列布局，不做横向滚动 */
             .project-cards-container {
-                display: flex !important;
-                overflow-x: auto !important;
-                scroll-snap-type: x mandatory !important;
-                gap: 10px !important;
-                padding-bottom: 10px !important;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: thin;
-                scrollbar-color: var(--border-color) transparent;
+                display: block !important;
+                overflow: visible !important;
+                gap: 10px;
+                padding-bottom: 0 !important;
             }
             
-            /* 项目卡片固定宽度，支持横向滑动 */
+            /* 项目卡片宽度100%，一行一个 */
             .project-cards-container > div {
-                min-width: 85vw !important;
-                scroll-snap-align: start;
+                width: 100% !important;
+                min-width: unset !important;
+                margin-bottom: 10px;
             }
             
             /* 4-column grid for highlights - make 1 column */
